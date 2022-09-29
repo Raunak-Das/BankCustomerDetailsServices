@@ -1,0 +1,26 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /gateway
+    
+spring:
+  application:
+    name: gateway-service
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    #    - health
+    
+  endpoint:
+    health:
+      show-details: always
+      
+      
+# Register with Eureka Service
+# eureka:
+  # client:
+    # serviceUrl:
+      # defaultZone : http://localhost:8761/eureka/
