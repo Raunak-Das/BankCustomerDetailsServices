@@ -69,15 +69,16 @@ public class BankServiceImpl implements BankService {
 			Aadhar aadhar = (Aadhar) r4j.getAadharByAadharNo(aadharNo);
 			
 			if(aadhar.getAadharNo()==null) {
+				customer.setAadharRemarks("KYC FAILED");
+				repo.save(customer);
 				throw new AadharCardProvidersServiceDownException2();
 			}
 			
-			if(aadhar.getAadharNo()==null) {
-				
+			/*if(aadhar.getAadharNo()==null) {
 				customer.setAadharRemarks("KYC FAILED");
 				repo.save(customer);
 				throw new KYCFailedException();
-			}
+			}*/
 				
 			customer.setAadharRemarks("KYC APPROVED");
 
@@ -94,14 +95,16 @@ public class BankServiceImpl implements BankService {
 			Pan pan = (Pan) r4j2.getPanByPanNo(panNo);
 			
 			if(pan.getPanNo()==null) {
+				customer.setPanRemarks("PAN VALIDATION FAILED");
+				repo.save(customer);
 				throw new PanCardProvidersServiceDownException2();
 			}
 			
-			if(pan.getPanNo()==null) {
+			/*if(pan.getPanNo()==null) {
 				customer.setPanRemarks("PAN VALIDATION FAILED");
 				repo.save(customer);
 				throw new PanValidationFailedException();
-			}
+			}*/
 			
 			customer.setPanRemarks("PAN VALIDATION APPROVED");
 		}
@@ -160,14 +163,16 @@ public class BankServiceImpl implements BankService {
 		Aadhar aadhar = (Aadhar) r4j.getAadharByAadharNo(aadharNo);
 		
 		if(aadhar.getAadharNo()==null) {
+			cust.setAadharRemarks("KYC FAILED");
+			repo.save(cust);
 			throw new AadharCardProvidersServiceDownException();
 		}
 		
-		if(aadhar.getAadharNo()==null) {
+		/*if(aadhar.getAadharNo()==null) {
 			cust.setAadharRemarks("KYC FAILED");
 			repo.save(cust);
 			throw new KYCFailedException();
-		}
+		}*/
 		
 		cust.setAadharRemarks("KYC APPROVED");
 		
@@ -195,15 +200,17 @@ public class BankServiceImpl implements BankService {
 		Pan pan = (Pan) r4j2.getPanByPanNo(panNo);
 		
 		if(pan.getPanNo()==null) {
+			cust.setPanRemarks("PAN VALIDATION FAILED");
+			repo.save(cust);
 			throw new PanCardProvidersServiceDownException();
 		}
 		
-		if(pan.getPanNo()==null) {
+		/*if(pan.getPanNo()==null) {
 			cust.setPanRemarks("PAN VALIDATION FAILED");
 			repo.save(cust);
 			throw new PanValidationFailedException();
 			
-		}
+		}*/
 
 		cust.setPanRemarks("PAN VALIDATION APPROVED");
 		
